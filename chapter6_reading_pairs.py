@@ -44,3 +44,38 @@ for line2 in lines2:
         pairs2.append(pair)
         print(pair)
 print(pairs2)
+
+print('-------------Reading coordinates-------------')
+# Reading coordinates, files with (x, y, z)
+# There are several solutions but here we present 2 solutions
+# solution 1: String search
+infile3 = open('xyz.dat', 'r')
+coord = []
+for line3 in infile3:
+    x_start = line3.find('x=')
+    y_start = line3.find('y=')
+    z_start = line3.find('z=')
+    x = line3[x_start + 2:y_start]
+    y = line3[y_start + 2:z_start]
+    z = line3[z_start + 2:]
+    print(float(x), float(y), float(z))
+    coord.append((float(x), float(y), float(z)))
+infile3.close()
+from numpy import *
+coord = array(coord)
+print(coord.shape, coord)
+
+print('----------Solution 2: String split---------------')
+infile4 = open('xyz.dat', 'r')
+coord4 = []
+for line4 in infile4:
+    words4 = line4.split('=')   # split with respect to the '='
+    # print(words4)
+    x = float(words4[1][:-1])
+    y = float(words4[2][:-1])
+    z = float(words4[3])
+    coord4.append((x, y, z))
+infile4.close()
+from numpy import *
+coord4 = array(coord4)
+print(coord4.shape, coord4)
