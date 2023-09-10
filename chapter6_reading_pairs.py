@@ -78,4 +78,20 @@ for line4 in infile4:
 infile4.close()
 from numpy import *
 coord4 = array(coord4)
-print(coord4.shape, coord4)
+print(coord4.shape)
+print(coord4)
+
+
+print('-------Writing to file----------')
+# Here, we will demonstrate how to copy data to files
+
+# print('======== writing tables ==========')
+# outfile = open('coordinates.dat', 'w')
+# for row in coord4:
+#     for column in row:
+#         outfile.write('%14.3f' % column)
+#     outfile.write('\n')
+# outfile.close()
+
+
+print('====== rows & columns with headings ========')
