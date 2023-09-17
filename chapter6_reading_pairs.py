@@ -85,7 +85,7 @@ print(coord4)
 print('-------Writing to file----------')
 # Here, we will demonstrate how to copy data to files
 
-# print('======== writing tables ==========')
+print('======== writing tables ==========')
 # outfile = open('coordinates.dat', 'w')
 # for row in coord4:
 #     for column in row:
@@ -95,3 +95,17 @@ print('-------Writing to file----------')
 
 
 print('====== rows & columns with headings ========')
+outfile = open('tmp_table.dat', 'w')
+ncolumns = len(coord4[0])
+outfile.write('           ')
+for i in range(1, ncolumns + 1):
+    outfile.write('%11s     ' % ('column %2d' % i))
+outfile.write('\n')
+row_couter = 1
+for row in coord4:
+    outfile.write('row %2d' % row_couter)
+    for column in row:
+        outfile.write('%16.5f' % column)
+    outfile.write('\n')
+    row_couter += 1
+print(outfile)
