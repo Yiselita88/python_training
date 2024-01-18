@@ -119,3 +119,23 @@ phone_notebook = [PhB1, PhB2]
 
 for person in phone_notebook:
     print(person.dump())
+
+
+# Example of the use of classes for geometric figures
+from math import *
+
+
+class Circle:
+    def __init__(self, x0, y0, R):
+        self.x0, self.y0, self.R = x0, y0, R
+
+    def area(self):
+        return pi * self.R**2
+
+    def circumference(self):
+        return 2 * pi * self.R
+
+
+C1 = Circle(2, -1, 5)
+print('A circle with radius %g at (%g, %g) has area %g' %
+      (C1.R, C1.x0, C1.y0, C1.area()))
