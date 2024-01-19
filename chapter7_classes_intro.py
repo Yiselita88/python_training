@@ -139,3 +139,34 @@ class Circle:
 C1 = Circle(2, -1, 5)
 print('A circle with radius %g at (%g, %g) has area %g' %
       (C1.R, C1.x0, C1.y0, C1.area()))
+
+# # Special Methods
+# Special method __call__
+
+
+class Derivative:
+    def __init__(self, f, h=1E-9):
+        self.f = f
+        self.h = float(h)
+
+    def __call__(self, x):
+        f, h = self.f, self.h
+        return (f(x + h) - f(x)) / h
+
+
+df = Derivative(sin)
+x = pi
+print(df(x))
+print(cos(x))
+
+# the following is the direct formula if we were not using classes
+print((sin(pi + float(1E-9)) - sin(pi)) / float(1E-9))
+
+
+def g(t):
+    return t ** 3
+
+
+dg = Derivative(g)
+t = 1
+print(dg(t))
