@@ -170,3 +170,51 @@ def g(t):
 dg = Derivative(g)
 t = 1
 print(dg(t))
+
+# special method __string__. For this, we will reuse the Y class previously defined
+
+
+class Y2:
+
+    def __init__(self, v_0):
+        self.v_0 = v_0
+        self.g = 9.81
+
+    def __call__(self, t):
+        return self.v_0 * t - 0.5 - self.g * t**2
+
+    def __str__(self):
+        return 'v_0*t - 0.5*g*t**2; v_0=%g' % self.v_0
+
+
+y = Y2(1.5)
+print(y(0.2))
+print(y)
+
+# implementing what we learned
+
+
+class PhoneBook:
+    def __init__(self):
+        self.contacts = {}
+
+    def add(self, name, mobile=None, office=None, private=None, email=None):
+        p = Phone_book(name, mobile, office, private, email)
+        self.contacts[name] = p
+
+    def __str__(self):
+        s = ''
+        for p in sorted(self.contacts):
+            s += str(self.contacts[p])
+        return s
+
+    def __call__(self, name):
+        return self.contacts[name]
+
+
+b = PhoneBook()
+b.add('Yisi Martina', office='1234667788', email='ymartinita @ yahoo.com')
+b.add('Pochito Pio', office='789456147', mobile='9874546321')
+
+print(b('Yisi Martina'))
+print(b)
