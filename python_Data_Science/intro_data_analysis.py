@@ -81,3 +81,38 @@ print(a9)
 # create an uninitialized array of three integers
 a10 = np.empty(8)
 print(a10)
+
+# # Numpy Array Attributes # #
+# generate random array but with the same set of value every time with seed(0)
+import numpy as np
+np.random.seed(0)
+
+x1 = np.random.randint(10, size=6)
+x2 = np.random.randint(10, size=(3, 4))
+x3 = np.random.randint(10, size=(3, 4, 5))
+
+# print attributes
+print(x3.ndim, x3.shape, x3.size, x3.dtype, x3.itemsize, x3.nbytes)
+print(x2)
+
+
+# # Array Indexing: Accessing single elements: this is similar to the list part in python intro
+print(x1)
+print(x1[0])
+print(x1[4])
+print(x1[-2])
+print(x2[0, 0])
+print(x2[2, 0])
+print(x2[2, -1])
+
+# # array slicing: accessing subarrays: x[start:stop:step]
+# 1D subarray
+z = np.arange(10)
+print(z)
+print(z[:5])
+print(z[5:])
+print(z[4:7])
+print(z[::2])
+print(z[1::2])
+print(z[::-1])  # all elements reversed
+print(z[5::-2])
