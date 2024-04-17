@@ -116,3 +116,98 @@ print(z[::2])
 print(z[1::2])
 print(z[::-1])  # all elements reversed
 print(z[5::-2])
+
+# multidimensional subarrays
+print(x2[:2, :3])
+print(x2[:3, ::2])
+print(x2[::-1, ::-1])
+
+print('-----------')
+# accesing array rows and columns
+print(x2)
+print(x2[:, 0])  # first column of x2
+print(x2[0, :])  # first row of x2
+print(x2[0])     # equivalent to print(x2[0, :])
+
+# changing arrays by changing their sub-arrays
+x2_sub = x2[:2, :2]
+print(x2_sub)
+
+x2_sub[0, 0] = 99
+print(x2_sub)
+
+print(x2)
+
+# # create copies of arrays
+# step 1: create subcopy of the array
+x2_sub_copy = x2[:2, :2].copy()
+print(x2_sub_copy)
+
+# step 2: assign new element to a given postion of the copy
+x2_sub_copy[0, 0] = 42
+print(x2_sub_copy)
+
+# # array reshaping
+omh = np.array([1, 2, 3])
+
+# row vector via reshape
+print(omh.reshape((1, 3)), omh.dtype)
+
+# row vector via newaxis
+print(omh[np.newaxis, :], omh.dtype)
+
+# column vector via reshape
+print(omh.reshape((3, 1)))
+
+# column vector via newaxis
+print(omh[:, np.newaxis])
+
+# # array concatenation
+delta = np.array([7, 8, 9])
+gamma = np.array([125, 131, 99])
+iota = np.array([88, 88, 88])
+
+dg = np.concatenate([delta, gamma])
+print(dg)
+
+dgi = np.concatenate([delta, iota, gamma])
+print(dgi)
+
+grid = np.array([[1, 2, 3],
+                 [4, 5, 6]])
+
+# concatenate along the first axis
+gridx2 = np.concatenate([grid, grid])
+print(gridx2)
+
+# concatenate along the second axis (zero-indexed)
+gridx3 = np.concatenate([grid, grid], axis=1)
+print(gridx3)
+
+# # working with arrays of different dimensions, how to concatenate them
+# vertical stach
+print(np.vstack([grid, delta]))
+theta = np.array([[99],
+                  [99]])
+
+# horizontal stack
+print(np.hstack([grid, theta]))
+
+# # Splitting arrays
+print(dgi)
+dgi1, dgi2, dgi3 = np.split(dgi, [3, 5])
+print(dgi1, dgi2, dgi3)
+
+grid1 = np.arange(16).reshape((4, 4))
+print(grid1)
+
+# similarly to np.split we can pass indices giving the split points
+# vertical split
+upper, lower = np.vsplit(grid1, [2])
+print(upper)
+print(lower)
+
+# horizontal split
+left, right = np.hsplit(grid1, [2])
+print(left)
+print(right)
