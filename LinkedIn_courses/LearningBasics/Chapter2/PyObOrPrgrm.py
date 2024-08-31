@@ -498,23 +498,3 @@ print(b3)
 # print(obj.value1)
 
 # obj.some_func(20)
-
-
-# def addTwo(x):
-#     return x + 2
-
-
-# def multiply(a, b):
-#     return a * b
-
-
-# var = multiply(addTwo(2), 3)
-# print(var)
-
-# myList = [[1, 2], ['apple'], [3, 4, 5]]
-# listLen = len(myList)
-# print(listLen)
-
-# # false = False
-# print(456 % 10)
-print(list(range(101))[::-5])
