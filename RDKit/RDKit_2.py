@@ -124,3 +124,24 @@ Chem.SanitizeMol(m11)
 print(m11.GetBondWithIdx(1).GetBondType())
 
 # # WORKING with 2D molecules : Generating Depictions
+m13 = Chem.MolFromSmiles('c1nccc2n1ccc2')
+print(AllChem.Compute2DCoords(m13))
+
+# printing 2D molecules with common template
+template = Chem.MolFromSmiles('c1nccc2n1ccc2')
+print(AllChem.Compute2DCoords(template))
+
+ms = [Chem.MolFromSmiles(smi) for smi in ('OCCc1ccn2cnccc12','C1CC1Oc1cc2ccncn2c1','CNC(=O)c1nccc2cccn12')]
+for m in ms:
+    _ = AllChem.GenerateDepictionMatching2DStructure(m, template)
+
+img5 = Draw.MolsToGridImage(ms, molsPerRow=3, subImgSize=(300, 300))
+img5.save('mol_w_tmplt.png')
+
+# # Working with 3D Molecules # #
+# embedding molecules
+m14 = Chem.MolFromSmiles('C1CCC1OC')
+m15 = Chem.AddHs(m14)
+print(AllChem.EmbedMolecule(m15))
+print(AllChem.MMFFOptimizeMolecule(m15))   
+
